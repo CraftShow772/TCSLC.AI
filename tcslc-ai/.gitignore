@@ -1,0 +1,12 @@
+node_modules
+.next
+out
+.env.local
+.env*.local
+tsconfig.tsbuildinfo
+
+# Editor directories and files
+.vscode
+.idea
+*.log
+.DS_Store
