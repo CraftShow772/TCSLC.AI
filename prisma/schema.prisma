@@ -1,0 +1,21 @@
+// SQLite dev store for audit logs. Can migrate to Postgres later.
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model AuditLog {
+  id           String   @id @default(cuid())
+  createdAt    DateTime @default(now())
+  route        String
+  userContext  Json
+  messages     Json     // redacted messages
+  response     String   // trimmed text
+  tools        Json     // tools invoked & params
+  piiRedactions Int     // count of redactions applied
+  confidence   Float    // model/app confidence (0..1)
+}
